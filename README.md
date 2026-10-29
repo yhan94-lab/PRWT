@@ -6,14 +6,6 @@ This repository contains the official implementation of the manuscript:
 
 **Status:** Manuscript under review at *Journal of Translational Internal Medicine*.
 
----
-
-## ⚠️ Code Availability During Review
-
-The source code is **not publicly released yet** while the manuscript is under review.
-
-
-> Please do not redistribute this link or token. The code will be made publicly available upon acceptance of the manuscript.
 
 ---
 
