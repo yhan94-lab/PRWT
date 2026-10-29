@@ -212,12 +212,12 @@ def train(rank, world_size, cfg):
         inputs_denorm = imutils.denormalize_img2(inputs.clone())
         cls_labels = cls_labels.to(device, non_blocking=True)
 
-        # 该方法返回的数据没有梯度
+
         cams = camutils.multi_scale_cam_with_aff_mat(wetr, inputs=inputs, scales=cfg.cam.scales)
 
         cls, segs, attns, attn_pred = wetr(inputs, seg_detach=cfg.train.seg_detach)
 
-        # ----------------- 开始：旋转一致性分支（90°）  -----------------
+        # ----------------- Joint Rotation Consistency (JRC) -----------------
         k = random.choice([1, 2, 3])
         inputs_rot = torch.rot90(inputs, k=k, dims=[2, 3])
         cls_rot, segs_rot, attns_rot, attn_pred_rot = wetr(inputs_rot, seg_detach=cfg.train.seg_detach)
@@ -245,7 +245,7 @@ def train(rank, world_size, cfg):
             torch.tensor(0.0, device=loss_rot.device, requires_grad=True),
             loss_rot,
         )
-        # ----------------- 结束：旋转一致性分支（90°）  -----------------
+        # ----------------- Joint Rotation Consistency (JRC) -----------------
 
         refined_pseudo_label = camutils.refine_cams_with_bkg_v2(par, inputs_denorm, cams=cams, cls_labels=cls_labels,
                                                                 cfg=cfg,
