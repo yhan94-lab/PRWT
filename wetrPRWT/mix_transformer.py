@@ -143,7 +143,7 @@ class Attention(nn.Module):
 
         return x, attn_copy
 
-
+# Phase-Oriented Gated Activation (PoGA)
 class ModReLU(nn.Module):
     def __init__(self, features):
         super().__init__()
@@ -154,7 +154,7 @@ class ModReLU(nn.Module):
 
         return torch.abs(x) * F.gelu(torch.sin(torch.angle(x) + self.b) + torch.cos(torch.angle(x) + self.b)) * torch.exp(1j * torch.angle(x))
 
-
+# Polar-Gated Spectral Mixing Block (PoSMB)
 class FFTNetBlock(nn.Module):
     def __init__(self, dim):
         super().__init__()
