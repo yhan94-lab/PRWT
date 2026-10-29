@@ -25,4 +25,6 @@ The source code is **not publicly released yet** while the manuscript is under r
 
 - **`scripts/infer_seg_extended_metrics.py`** is the inference script used in the manuscript. **All compared methods reported in the manuscript use this same script**; they differ only in how the model is loaded (i.e., which checkpoint/architecture is instantiated). This ensures a consistent evaluation protocol across all methods.
 
-- **`datascript/databrats21`** and **`datascript/dataMen`** contain the preprocessing pipelines for the two datasets, respectively. The preprocessing **strictly follows the protocol described in the CTAC paper**, ensuring fair comparison with prior work.
+- **`datascript/databrats21`** and **`datascript/dataMen`** contain the preprocessing pipelines for the two datasets, respectively. The preprocessing **strictly follows the protocol described in the CTAC paper [1]**, ensuring fair comparison with prior work.
+
+[1] Channel-Gated Transformers With Affinity CAM for Weakly Supervised Multi-Class Brain Tumor Segmentation, IEEE, 2025, pp. 1–14.
