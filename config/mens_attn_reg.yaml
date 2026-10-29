@@ -1,0 +1,62 @@
+backbone:
+  config: mit_b1
+  stride: [4, 2, 2, 1]
+  comments: None
+  pooling: gmp
+
+dist:
+  world_size: 2
+
+
+dataset:
+  root_dir:
+  name_list_dir:
+  num_classes: 4
+  crop_size: 160
+  resize_range: [512, 2048]
+  rescale_range: [0.5, 2.0]
+  ignore_index: 255
+
+work_dir:
+  dir: work_dir_voc
+  ckpt_dir: checkpoints
+  pred_dir: predictions
+  segs_dir: segs
+  tb_logger_dir: tb_logger
+  history: history
+
+
+train:
+  split: train
+  samples_per_gpu: 4
+  max_iters: 20000
+  cam_iters: 2000
+  eval_iters: 2000
+  log_iters: 200
+  seg_detach: None
+  backend: nccl
+  num_workers: 1
+
+cam:
+  bkg_score: 0.45
+  high_thre: 0.55
+  low_thre: 0.35
+  aff_thre: 0.4
+  scales: [1.0, 0.5, 1.5]
+
+val:
+  split: val
+  num_workers: 1
+
+optimizer:
+  type: AdamW
+  learning_rate: 6e-5
+  betas: [0.9, 0.999]
+  weight_decay: 0.01
+
+scheduler:
+  warmup_iter: 1500
+  warmup_ratio: 1e-6
+  power: 1.0
+
+radius: 8
