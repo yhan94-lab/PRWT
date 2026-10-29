@@ -144,7 +144,7 @@ class Attention(nn.Module):
         return x, attn_copy
 
 # Phase-Oriented Gated Activation (PoGA)
-class ModReLU(nn.Module):
+class PoGA(nn.Module):
     def __init__(self, features):
         super().__init__()
         self.b = nn.Parameter(torch.Tensor(features))
@@ -162,7 +162,7 @@ class FFTNetBlock(nn.Module):
 
         # reduce_channels = int(dim * 1.5)
         self.filter = nn.Linear(dim, dim)
-        self.modrelu = ModReLU(dim)
+        self.modrelu = PoGA(dim)
         # self.filter_re = nn.Linear(reduce_channels, dim)
 
     def forward(self, x):
