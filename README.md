@@ -19,4 +19,6 @@ This repository contains the official implementation of the manuscript:
 
 - **`datascript/databrats21`** and **`datascript/dataMen`** contain the preprocessing pipelines for the two datasets, respectively. The preprocessing **strictly follows the protocol described in the CTAC paper [1]**, ensuring fair comparison with prior work.
 
+- **`Figure_sourceData.zip`** contains numerical source data associated with the figures presented in the manuscript.
+
 [1] Channel-Gated Transformers With Affinity CAM for Weakly Supervised Multi-Class Brain Tumor Segmentation, IEEE, 2025, pp. 1–14.
